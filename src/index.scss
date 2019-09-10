@@ -1,0 +1,21 @@
+:root {
+  --content-pad: 34px;
+  --card-width: 340px;
+  --card-height: 367px;
+
+  @media only screen and (max-width: 767px) {
+    --content-pad: 20px;
+    --card-width: 280px;
+    --card-height: 330px;
+  }
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+.content {
+  max-width: 1452px;
+  margin: 0 auto;
+  padding: 0 var(--content-pad);
+}

@@ -1,0 +1,27 @@
+.extendable-input {
+  display: flex;
+  flex-flow: row nowrap;
+  //justify-content: space-between;
+
+  position: relative;
+  padding: 10px;
+
+  &--extended {
+    background-color: lightgray;
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      height: 2px;
+      background-color: #000;
+    }
+  }
+
+  &__input {
+    background-color: transparent;
+  }
+}
