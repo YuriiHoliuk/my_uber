@@ -1,24 +1,27 @@
 import React from 'react';
 import './RestaurantCard.scss';
 import { restaurantType } from '../../constants/prop-types';
+import { Link } from 'react-router-dom';
+import Badge from '../Badge/Badge';
 
 const RestaurantCard = (props) => {
   const {
     title,
     categories,
     etaRange,
-    imgUrl,
+    imageUrl,
+    id,
   } = props;
 
   return (
-    <div className="restaurant-card">
-      <img src={imgUrl} alt="" className="restaurant-card__img" />
+    <Link to={`/${id}`} className="restaurant-card">
+      <img src={imageUrl} alt="" className="restaurant-card__img" />
       <h3 className="restaurant-card__title">{title}</h3>
       <p className="restaurant-card__categories">
         {categories.join(' • ')}
       </p>
-      <span className="restaurant-card__eta">{etaRange}</span>
-    </div>
+      <Badge>{etaRange}</Badge>
+    </Link>
   );
 };
 

@@ -1,0 +1,46 @@
+.categories-menu {
+  &__list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    overflow: auto;
+
+    font-size: 14px;
+    line-height: 21px;
+    white-space: nowrap;
+  }
+
+  &__item {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-right: 24px;
+    }
+
+    &:hover::after {
+      display: block;
+
+      background-color: #000;
+    }
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+
+      background-color: #fff;
+      transition: background-color 300ms;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 30px 0;
+    color: #000;
+    text-decoration: none;
+  }
+}

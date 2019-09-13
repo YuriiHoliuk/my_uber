@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+input,
+button {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}

@@ -1,41 +1,109 @@
-import React from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 import ExtendableInput from '../ExtendableInput/ExtendableInput';
 
-const Header = props => (
-  <div className="content">
-    <header className="header">
-      <img className="header__logo" src="./images/logo.svg" alt="Uber Eats" />
+class Header extends Component {
+  state = {
+    location: '',
+    search: '',
+    time: '',
+    isSticky: false,
+    height: 0,
+  };
 
-      <div className="header__delivery-info delivery-info">
-        <ExtendableInput
-          name="location"
-          onChange={console.log}
-          placeholder="Where we should deliver?"
-          buttonText="Deliver address"
-          iconUrl="./images/place.svg"
+  containerRef = createRef();
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.manageSticky);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.manageSticky);
+  }
+
+  manageSticky = () => {
+    const y = window.scrollY;
+    const { isSticky } = this.state;
+
+    if (y !== 0 && !isSticky) {
+      const { height } = this.containerRef.current.getBoundingClientRect();
+
+      this.setState({ isSticky: true, height });
+    } else if (y === 0 && isSticky) {
+      this.setState({ isSticky: false, height: 0 });
+    }
+  };
+
+  render() {
+    const {
+      location,
+      search,
+      time,
+      isSticky,
+      height,
+    } = this.state;
+    // eslint-disable-next-line max-len
+    const containerClass = `header__container ${isSticky ? 'header__container--sticky' : ''}`;
+
+    return (
+      <>
+        <div className={containerClass} ref={this.containerRef}>
+          <div className="content">
+            <header className="header">
+              <Link to="/">
+                <img
+                  className="header__logo"
+                  src="./images/logo.svg"
+                  alt="Uber Eats"
+                />
+              </Link>
+
+              <div className="header__delivery-info delivery-info">
+                <ExtendableInput
+                  name="location"
+                  onChange={value => this.setState({ location: value })}
+                  placeholder="Where we should deliver?"
+                  buttonText="Deliver address"
+                  iconUrl="./images/place.svg"
+                  value={location}
+                />
+
+                <ExtendableInput
+                  name="time"
+                  onChange={value => this.setState({ time: value })}
+                  iconUrl="./images/clock.svg"
+                  buttonText="Deliver time"
+                  value={time}
+                  type="time"
+                />
+              </div>
+
+              <ExtendableInput
+                name="search"
+                onChange={value => this.setState({ search: value })}
+                placeholder="What are you craving?"
+                buttonText="Search"
+                iconUrl="./images/search.svg"
+                value={search}
+                className="header__search"
+              />
+
+              <button type="button" className="header__btn">
+                Sign in
+              </button>
+            </header>
+          </div>
+        </div>
+        <div
+          className="header__placeholder"
+          style={{ height }}
         />
-        <div className="delivery-info__location">
-          <img src="./images/place.svg" alt="place pin icon" />
-          <input type="text" name="location" />
-        </div>
-
-        <div className="delivery-info__time">
-          <img src="./images/clock.svg" alt="clock icon" />
-          <input type="time" name="time" />
-        </div>
-      </div>
-      <div className="search">
-        <img src="./images/search.svg" alt="search icon" />
-        <input type="text" placeholder="Search" name="search" />
-      </div>
-      <button type="button" className="sign-in__btn">
-          Sign in
-      </button>
-    </header>
-  </div>
-);
+      </>
+    );
+  }
+}
 
 Header.propTypes = {
 

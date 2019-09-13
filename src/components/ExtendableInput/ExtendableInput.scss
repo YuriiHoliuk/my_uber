@@ -1,13 +1,17 @@
 .extendable-input {
   display: flex;
   flex-flow: row nowrap;
-  //justify-content: space-between;
 
   position: relative;
-  padding: 10px;
+  padding: 12px 16px;
+
+  outline: none;
+  cursor: pointer;
 
   &--extended {
-    background-color: lightgray;
+    background-color: #f6f6f6;
+    cursor: initial;
+
     &::after {
       content: "";
 
@@ -22,6 +26,36 @@
   }
 
   &__input {
+    font-size: 16px;
+    line-height: 24px;
+    vertical-align: middle;
+    width: 100%;
+
     background-color: transparent;
+  }
+
+  &__icon {
+    margin-right: 18px;
+  }
+
+  &__close-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+  }
+
+  &__btn {
+    font-size: 16px;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+
+  &__separator {
+    display: inline-block;
+    height: 24px;
+    width: 1px;
+    margin: 0 16px;
+
+    background-color: #e2e2e2;
   }
 }

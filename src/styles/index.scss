@@ -1,3 +1,5 @@
+@import "./reset";
+
 :root {
   --content-pad: 34px;
   --card-width: 340px;
@@ -8,6 +10,10 @@
     --card-width: 280px;
     --card-height: 330px;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

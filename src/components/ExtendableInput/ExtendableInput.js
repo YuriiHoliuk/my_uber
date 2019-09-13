@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import './ExtendableInput.scss';
+import { onEnter } from '../../utils/events';
 
 class ExtendableInput extends Component {
   state = {
@@ -8,6 +9,10 @@ class ExtendableInput extends Component {
   };
 
   inputRef = createRef();
+
+  componentWillUnmount() {
+    this.unListenClickOutside();
+  }
 
   closeOnClickOutside = ({ target }) => {
     if (!target.closest('.extendable-input')) {
@@ -31,6 +36,10 @@ class ExtendableInput extends Component {
   };
 
   open = () => {
+    if (this.state.extended) {
+      return;
+    }
+
     this.setState(
       { extended: true },
       () => {
@@ -40,6 +49,15 @@ class ExtendableInput extends Component {
     );
   };
 
+  clear = () => {
+    this.props.onChange('');
+  };
+
+  onEnter = () => {
+    this.props.onChange(this.inputRef.current.value);
+    this.close();
+  };
+
   render() {
     const {
       iconUrl,
@@ -47,13 +65,23 @@ class ExtendableInput extends Component {
       buttonText,
       placeholder,
       name,
+      value,
+      type,
+      className,
     } = this.props;
     const { extended } = this.state;
     // eslint-disable-next-line max-len
-    const rootClass = `extendable-input${extended ? ' extendable-input--extended' : ''}`;
+    const rootClass = `${className} extendable-input${extended ? ' extendable-input--extended' : ''}`;
 
     return (
-      <div className={rootClass}>
+      <div
+        className={rootClass}
+        onClick={this.open}
+        role="button"
+        tabIndex={0}
+        onKeyDown={onEnter(this.open)}
+        onFocus={this.open}
+      >
         {iconUrl && (
           <img
             className="extendable-input__icon"
@@ -63,13 +91,9 @@ class ExtendableInput extends Component {
         )}
 
         {!extended && (
-          <button
-            className="extendable-input__btn"
-            type="button"
-            onClick={this.open}
-          >
-            {buttonText}
-          </button>
+          <span className="extendable-input__btn">
+            {value || buttonText}
+          </span>
         )}
 
         {extended && (
@@ -78,11 +102,29 @@ class ExtendableInput extends Component {
               name={name}
               ref={this.inputRef}
               className="extendable-input__input"
-              type="text"
+              type={type}
               placeholder={placeholder}
-              onChange={onChange}
+              onChange={({ target }) => onChange(target.value)}
+              value={value}
+              onKeyDown={onEnter(this.onEnter)}
             />
-            <button type="button" onClick={this.close}>Close</button>
+            {value && (
+              <button
+                className="extendable-input__clear-btn"
+                type="button"
+                onClick={this.clear}
+              >
+                Clear
+              </button>
+            )}
+            <span className="extendable-input__separator" />
+            <button type="button" onClick={this.close}>
+              <img
+                className="extendable-input__close-icon"
+                src="./images/close-button.svg"
+                alt="close"
+              />
+            </button>
           </>
         )}
       </div>
@@ -96,6 +138,9 @@ ExtendableInput.propTypes = {
   onChange: PropTypes.func,
   buttonText: PropTypes.string,
   placeholder: PropTypes.string,
+  value: PropTypes.string,
+  type: PropTypes.string,
+  className: PropTypes.string,
 };
 
 ExtendableInput.defaultProps = {
@@ -103,6 +148,9 @@ ExtendableInput.defaultProps = {
   onChange: () => {},
   buttonText: '',
   placeholder: '',
+  value: '',
+  type: 'text',
+  className: '',
 };
 
 export default ExtendableInput;

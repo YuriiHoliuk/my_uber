@@ -5,5 +5,5 @@ export const restaurantType = {
   title: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string),
   etaRange: PropTypes.string.isRequired,
-  imgUrl: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
 };
