@@ -1,3 +1,1 @@
-import { MenuItemCard } from './MenuItemCard';
-
-export { MenuItemCard };
+export * from './MenuItemCard';

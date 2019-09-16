@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Badge.scss';
 
-const Badge = ({ children }) => (
+export const Badge = ({ children }) => (
   <span className="badge">
     {children}
   </span>
@@ -19,5 +19,3 @@ Badge.propTypes = {
 Badge.defaultProps = {
   children: null,
 };
-
-export default Badge;

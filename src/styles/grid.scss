@@ -1,7 +1,9 @@
-.restaurants-list {
+@import "variables";
+
+.cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
-  grid-gap: 40px 20px;
+  grid-gap: $gap-lg $gap-sm;
   justify-items: center;
   align-items: center;
 }

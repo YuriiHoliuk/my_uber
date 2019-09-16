@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './ExtendableInput.scss';
 import { onEnter } from '../../utils/events';
 
-class ExtendableInput extends Component {
+export class ExtendableInput extends Component {
   state = {
     extended: false,
   };
@@ -152,5 +152,3 @@ ExtendableInput.defaultProps = {
   type: 'text',
   className: '',
 };
-
-export default ExtendableInput;

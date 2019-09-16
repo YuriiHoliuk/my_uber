@@ -7,32 +7,26 @@ export const MenuSection = (props) => {
   const { title, uuid, items } = props;
 
   return (
-    <div className="menu-section">
+    <section className="menu-section">
       <h2 className="menu-section__title" id={uuid}>{title}</h2>
 
-      <ul className="menu-section__cards">
+      <ul className="cards-grid">
         {items.map(item => (
-          <div key={item.uuid} style={{ width: '100%' }}>
-            <MenuItemCard {...item} />
-          </div>
+          <MenuItemCard key={item.uuid} {...item} />
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 
 MenuSection.propTypes = {
-  title: PropTypes.string,
-  uuid: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  uuid: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({
     uuid: PropTypes.string,
     imageUrl: PropTypes.string,
     title: PropTypes.string,
     price: PropTypes.number,
     description: PropTypes.string,
-  })),
-};
-
-MenuSection.defaultProps = {
-
+  })).isRequired,
 };

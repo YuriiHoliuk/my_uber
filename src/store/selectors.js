@@ -1,11 +1,12 @@
 import { createSelector } from 'reselect';
 import { DEFAULT_ETA_RANGE } from '../constants/defaults';
 
-const restaurantsRootSelector = ({ restaurants }) => restaurants;
+const selectRestaurantsList = ({ listData }) => listData;
+const detailsSelector = ({ details }) => details;
 
 export const selectRestaurants = createSelector(
-  restaurantsRootSelector,
-  ({ data }) => {
+  selectRestaurantsList,
+  (data) => {
     if (!data) {
       return [];
     }
@@ -32,7 +33,36 @@ export const selectRestaurants = createSelector(
 );
 
 export const selectRestaurantDetails = createSelector(
-  restaurantsRootSelector,
+  detailsSelector,
   (_, id) => id,
-  ({ details }, id) => details[id],
+  (details, id) => {
+    const restaurant = details[id];
+
+    if (!restaurant) {
+      return null;
+    }
+
+    const {
+      title,
+      etaRange,
+      categories,
+      heroImageUrls,
+      location: { address },
+      sections: { 0: { subsectionUuids: sectionIds, uuid: firstSectionUuid } },
+      subsectionsMap: sectionsMap,
+      sectionEntitiesMap,
+    } = restaurant;
+    const entitiesMap = sectionEntitiesMap[firstSectionUuid];
+    const sections = sectionIds.map(sectionId => sectionsMap[sectionId]);
+
+    return {
+      title,
+      categories,
+      address,
+      sections,
+      entitiesMap,
+      imageUrls: heroImageUrls,
+      etaRange: etaRange ? etaRange.text : DEFAULT_ETA_RANGE,
+    };
+  },
 );

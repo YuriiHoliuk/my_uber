@@ -1,14 +1,17 @@
 @import "./reset";
+@import "./grid";
+@import "variables";
 
 :root {
-  --content-pad: 34px;
+  --content-pad: #{$gap-md};
   --card-width: 340px;
-  --card-height: 367px;
+  --restaurant-card-height: 367px;
+  --menu-item-card-height: 158px;
 
-  @media only screen and (max-width: 767px) {
-    --content-pad: 20px;
+  @media (max-width: $break-point-md) {
+    --content-pad: #{$gap-sm};
     --card-width: 280px;
-    --card-height: 330px;
+    --restaurant-card-height: 330px;
   }
 }
 
@@ -16,8 +19,13 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+body,
+button,
+a,
+input {
   font-family: Roboto, sans-serif;
+  font-size: $fz-md;
+  line-height: 1.5;
 }
 
 .content {

@@ -1,52 +1,42 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './RestaurantPage.scss';
-import { DEFAULT_ETA_RANGE } from '../../constants/defaults';
-import Badge from '../Badge/Badge';
+import { Badge } from '../Badge';
 import { CategoriesMenu } from '../CategoriesMenu';
 import { MenuSection } from '../MenuSection';
 
-class RestaurantPage extends Component {
-  constructor(props) {
-    super(props);
-
-  }
-
+export class RestaurantPage extends Component {
   componentDidMount() {
     this.props.loadRestaurantDetails(this.props.match.params.id);
   }
 
   render() {
-    // console.log(this.props.restaurant);
-    if (!this.props.restaurant) {
+    const { restaurant } = this.props;
+
+    if (!restaurant) {
       return null;
     }
 
     const {
-      restaurant: {
-        heroImageUrls,
-        title,
-        etaRange,
-        categories,
-        location: { address },
-        sections: { 0: { subsectionUuids: sectionIds, uuid: firstSectionUuid } },
-        subsectionsMap: sectionsMap,
-        sectionEntitiesMap,
-      },
-    } = this.props;
-    const entitiesMap = sectionEntitiesMap[firstSectionUuid];
-    const sections = sectionIds.map(id => sectionsMap[id]);
-    const maxSizeImg = heroImageUrls.reduce((acc, imgData) => {
+      title,
+      categories,
+      address,
+      sections,
+      entitiesMap,
+      imageUrls,
+      etaRange,
+    } = restaurant;
+    const maxSizeImg = imageUrls.reduce((acc, imgData) => {
       return imgData.width > acc.width
         ? imgData
         : acc;
     });
-    const srcSet = heroImageUrls
+    const srcSet = imageUrls
       .map(({ width, url }) => `${url} ${width}w`)
       .join(',\n');
 
     return (
-      <div>
+      <>
         <div className="welcome">
           <img
             srcSet={srcSet}
@@ -60,9 +50,7 @@ class RestaurantPage extends Component {
             <p className="general-info__categories">
               {categories.join(' • ')}
             </p>
-            <Badge>
-              {etaRange ? etaRange.text : DEFAULT_ETA_RANGE}
-            </Badge>
+            <Badge>{etaRange}</Badge>
             <div className="general-info__details">
               <span className="general-info__address">
                 {address}
@@ -74,9 +62,11 @@ class RestaurantPage extends Component {
         </div>
         <div className="content">
           <CategoriesMenu list={sections} />
+
           {sections.map(({ uuid, title, itemUuids }) => {
             return (
               <MenuSection
+                key={uuid}
                 uuid={uuid}
                 title={title}
                 items={itemUuids.map(itemUUid => entitiesMap[itemUUid])}
@@ -84,13 +74,37 @@ class RestaurantPage extends Component {
             );
           })}
 
-          {/*<pre>{JSON.stringify(this.props.restaurant, null, 4)}</pre>*/}
         </div>
-      </div>
+      </>
     );
   }
 }
 
-RestaurantPage.propTypes = {};
+RestaurantPage.propTypes = {
+  loadRestaurantDetails: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+  restaurant: PropTypes.shape({
+    title: PropTypes.string,
+    categories: PropTypes.arrayOf(PropTypes.string),
+    address: PropTypes.string,
+    sections: PropTypes.arrayOf(PropTypes.shape({
+      uuid: PropTypes.string,
+      title: PropTypes.string,
+      itemUuids: PropTypes.arrayOf(PropTypes.string),
+    })),
+    entitiesMap: PropTypes.shape({}),
+    imageUrls: PropTypes.arrayOf(PropTypes.shape({
+      url: PropTypes.string,
+      width: PropTypes.number,
+    })),
+    etaRange: PropTypes.string,
+  }),
+};
 
-export default RestaurantPage;
+RestaurantPage.defaultProps = {
+  restaurant: null,
+};

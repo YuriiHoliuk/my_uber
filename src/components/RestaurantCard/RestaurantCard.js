@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './RestaurantCard.scss';
 import { restaurantType } from '../../constants/prop-types';
-import { Link } from 'react-router-dom';
-import Badge from '../Badge/Badge';
+import { Badge } from '../Badge';
 
-const RestaurantCard = (props) => {
+export const RestaurantCard = (props) => {
   const {
     title,
     categories,
@@ -30,5 +30,3 @@ RestaurantCard.propTypes = restaurantType;
 RestaurantCard.defaultProps = {
   categories: [],
 };
-
-export default RestaurantCard;

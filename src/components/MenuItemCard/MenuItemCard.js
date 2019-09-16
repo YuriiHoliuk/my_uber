@@ -13,9 +13,21 @@ export const MenuItemCard = (props) => {
   return (
     <li className="menu-item-card">
       <div className="menu-item-card__info">
-        <h3 className="menu-item-card__title">{title}</h3>
-        <p className="menu-item-card__description">{description}</p>
-        <p className="menu-item-card__price">{price}</p>
+        <h3
+          title={title}
+          className="menu-item-card__title"
+        >
+          {title}
+        </h3>
+        <p
+          title={description}
+          className="menu-item-card__description"
+        >
+          {description}
+        </p>
+        <p className="menu-item-card__price">
+          {`£${price.toFixed(2)}`}
+        </p>
       </div>
       <img src={imageUrl} alt={title} className="menu-item-card__img" />
     </li>

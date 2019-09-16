@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { restaurantType } from '../../constants/prop-types';
-import RestaurantCard from '../RestaurantCard/RestaurantCard';
+import { RestaurantCard } from '../RestaurantCard';
 import './RestaurantsList.scss';
 
-class RestaurantsList extends Component {
+export class RestaurantsListPage extends Component {
   componentDidMount() {
     this.props.loadRestaurants();
   }
@@ -14,7 +14,7 @@ class RestaurantsList extends Component {
 
     return (
       <div className="content">
-        <div className="restaurants-list">
+        <div className="cards-grid">
           {restaurants.map(restaurant => (
             <RestaurantCard key={restaurant.id} {...restaurant} />
           ))}
@@ -24,9 +24,7 @@ class RestaurantsList extends Component {
   }
 }
 
-RestaurantsList.propTypes = {
+RestaurantsListPage.propTypes = {
   restaurants: PropTypes.arrayOf(PropTypes.shape(restaurantType)).isRequired,
   loadRestaurants: PropTypes.func.isRequired,
 };
-
-export default RestaurantsList;

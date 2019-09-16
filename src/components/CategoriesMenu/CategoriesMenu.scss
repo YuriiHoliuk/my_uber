@@ -1,13 +1,18 @@
+@import "../../styles/utils";
+
 .categories-menu {
   &__list {
+    @extend %sticky;
+
+    font-size: $fz-sm;
+    white-space: nowrap;
+
     display: flex;
     list-style: none;
     align-items: center;
     overflow: auto;
 
-    font-size: 14px;
-    line-height: 21px;
-    white-space: nowrap;
+    margin-bottom: $gap-lg;
   }
 
   &__item {

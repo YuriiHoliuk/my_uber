@@ -2,9 +2,9 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './Header.scss';
-import ExtendableInput from '../ExtendableInput/ExtendableInput';
+import { ExtendableInput } from '../ExtendableInput';
 
-class Header extends Component {
+export class Header extends Component {
   state = {
     location: '',
     search: '',
@@ -16,11 +16,11 @@ class Header extends Component {
   containerRef = createRef();
 
   componentDidMount() {
-    window.addEventListener('scroll', this.manageSticky);
+    // window.addEventListener('scroll', this.manageSticky);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.manageSticky);
+    // window.removeEventListener('scroll', this.manageSticky);
   }
 
   manageSticky = () => {
@@ -44,14 +44,13 @@ class Header extends Component {
       isSticky,
       height,
     } = this.state;
-    // eslint-disable-next-line max-len
-    const containerClass = `header__container ${isSticky ? 'header__container--sticky' : ''}`;
+    const containerClass = `header ${isSticky ? 'header--sticky' : ''}`;
 
     return (
       <>
-        <div className={containerClass} ref={this.containerRef}>
+        <header className={containerClass} ref={this.containerRef}>
           <div className="content">
-            <header className="header">
+            <div className="header__inner">
               <Link to="/">
                 <img
                   className="header__logo"
@@ -93,9 +92,9 @@ class Header extends Component {
               <button type="button" className="header__btn">
                 Sign in
               </button>
-            </header>
+            </div>
           </div>
-        </div>
+        </header>
         <div
           className="header__placeholder"
           style={{ height }}
@@ -108,5 +107,3 @@ class Header extends Component {
 Header.propTypes = {
 
 };
-
-export default Header;

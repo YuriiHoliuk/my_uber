@@ -1,8 +1,12 @@
 import { connect } from 'react-redux';
-import RestaurantsList from './RestaurantsList';
+import { RestaurantsListPage } from './RestaurantsListPage';
 import { loadRestaurants } from '../../store/actions';
 import { selectRestaurants } from '../../store/selectors';
 
-export default connect(state => ({
+const Enhanced = connect(state => ({
   restaurants: selectRestaurants(state),
-}), { loadRestaurants })(RestaurantsList);
+}), { loadRestaurants })(RestaurantsListPage);
+
+export {
+  Enhanced as RestaurantsListPage,
+};

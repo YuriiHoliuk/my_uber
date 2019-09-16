@@ -1,3 +1,5 @@
+@import "../../styles/utils";
+
 .welcome {
   display: flex;
   align-items: center;
@@ -18,27 +20,24 @@
 }
 
 .general-info {
-  padding: 24px 40px 24px 98px;
+  padding: 24px $gap-lg 24px 98px;
   background: #fff;
 
   &__title {
-    font-size: 36px;
-    line-height: 1.5;
+    font-size: $fz-xl;
 
     margin-bottom: 16px;
   }
 
   &__categories {
-    font-size: 14px;
-    line-height: 21px;
+    font-size: $fz-sm;
     color: #757575;
 
     margin-bottom: 16px;
   }
 
   &__details {
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: $fz-sm;
 
     margin-top: 16px;
   }

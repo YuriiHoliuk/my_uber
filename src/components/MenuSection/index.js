@@ -1,3 +1,1 @@
-import { MenuSection } from './MenuSection';
-
-export { MenuSection };
+export * from './MenuSection';
