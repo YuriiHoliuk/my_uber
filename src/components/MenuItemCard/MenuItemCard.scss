@@ -1,27 +1,32 @@
 @import "../../styles/utils";
 
-$img-width-multiplier: 0.43;
-$img-width: calc(var(--card-width) * #{$img-width-multiplier});
-
 .menu-item-card {
+  --height: var(--menu-item-card-height);
+
+  @media (max-width: $break-point-sm) {
+    --height: calc(var(--menu-item-card-height) * 0.75);
+  }
+
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
   justify-content: space-between;
 
-  height: var(--menu-item-card-height);
+  height: var(--height);
   width: 100%;
 
-  border: 1px solid gray;
+  border: 1px solid #e0e0e0;
 
   &__info {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
 
-    max-width: calc(100% - #{$img-width});
+    max-width: calc(100% - var(--height));
     height: 100%;
     padding: 16px;
+
+    border-right: 1px solid #e0e0e0;
   }
 
   &__title {
@@ -41,11 +46,19 @@ $img-width: calc(var(--card-width) * #{$img-width-multiplier});
     -webkit-box-orient: vertical;
 
     margin-bottom: 10px;
+
+    @media (max-width: $break-point-sm) {
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 
   &__img {
     display: block;
-    max-width: #{$img-width};
+    height: auto;
+    width: var(--height);
+    max-width: 45%;
     align-self: center;
   }
 }

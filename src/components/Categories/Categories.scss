@@ -1,0 +1,12 @@
+@import "../../styles/utils";
+
+.categories {
+  font-size: $fz-sm;
+  color: #757575;
+
+  margin-bottom: 8px;
+
+  &--big {
+    margin-bottom: 16px;
+  }
+}

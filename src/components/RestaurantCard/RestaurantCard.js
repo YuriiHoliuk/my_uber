@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './RestaurantCard.scss';
 import { restaurantType } from '../../constants/prop-types';
 import { Badge } from '../Badge';
+import { Categories } from '../Categories';
 
 export const RestaurantCard = (props) => {
   const {
@@ -17,9 +18,7 @@ export const RestaurantCard = (props) => {
     <Link to={`/${id}`} className="restaurant-card">
       <img src={imageUrl} alt="" className="restaurant-card__img" />
       <h3 className="restaurant-card__title">{title}</h3>
-      <p className="restaurant-card__categories">
-        {categories.join(' • ')}
-      </p>
+      <Categories categories={categories} />
       <Badge>{etaRange}</Badge>
     </Link>
   );

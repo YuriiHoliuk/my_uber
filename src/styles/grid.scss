@@ -3,7 +3,9 @@
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
-  grid-gap: $gap-lg $gap-sm;
-  justify-items: center;
-  align-items: center;
+  gap: $gap-lg $gap-sm;
+
+  @media (max-width: $break-point-md) {
+    row-gap: $gap-sm;
+  }
 }

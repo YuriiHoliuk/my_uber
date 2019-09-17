@@ -6,18 +6,22 @@ export const CategoriesMenu = (props) => {
   const { list } = props;
 
   return (
-    <ul className="categories-menu__list">
-      {list.map(({ title, uuid }) => (
-        <li key={uuid} className="categories-menu__item">
-          <a
-            href={`#${uuid}`}
-            className="categories-menu__link"
-          >
-            {title}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div className="categories-menu">
+      <div className="content">
+        <ul className="categories-menu__list">
+          {list.map(({ title, uuid }) => (
+            <li key={uuid} className="categories-menu__item">
+              <a
+                href={`#${uuid}`}
+                className="categories-menu__link"
+              >
+                {title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 

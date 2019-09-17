@@ -1,9 +1,9 @@
 @import "../../styles/utils";
 
 .categories-menu {
-  &__list {
-    @extend %sticky;
+  @extend %sticky;
 
+  &__list {
     font-size: $fz-sm;
     white-space: nowrap;
 
@@ -44,8 +44,12 @@
 
   &__link {
     display: inline-block;
-    padding: 30px 0;
+    padding: $gap-sm 0;
     color: #000;
     text-decoration: none;
+
+    @media (max-width: $break-point-sm) {
+      padding: $gap-xs 0;
+    }
   }
 }

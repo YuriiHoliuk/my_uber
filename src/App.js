@@ -8,13 +8,11 @@ import { store } from './store';
 import { RestaurantPage } from './components/RestaurantPage';
 
 export const App = () => (
-  <div className="wrapper">
-    <Provider store={store}>
-      <Router>
-        <Header />
-        <Route exact path="/" component={RestaurantsListPage} />
-        <Route exact path="/:id" component={RestaurantPage} />
-      </Router>
-    </Provider>
-  </div>
+  <Provider store={store}>
+    <Router>
+      <Header />
+      <Route exact path="/" component={RestaurantsListPage} />
+      <Route exact path="/:id" component={RestaurantPage} />
+    </Router>
+  </Provider>
 );

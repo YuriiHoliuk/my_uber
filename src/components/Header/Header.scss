@@ -2,6 +2,7 @@
 
 .header {
   @extend %sticky;
+  overflow: hidden;
 
   &--sticky {
     position: fixed;
