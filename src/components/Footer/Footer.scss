@@ -4,7 +4,9 @@
   --column-width: 46vw;
   --base-gap: #{$gap-lg};
 
+  position: relative;
   padding: 70px 0;
+
   color: #fff;
   background-color: #262626;
 
@@ -115,6 +117,10 @@
     margin-bottom: 16px;
     white-space: nowrap;
 
+    &:hover {
+      text-decoration: underline;
+    }
+
     &--intended {
       font-weight: 500;
     }
@@ -136,4 +142,25 @@
 
 .offset {
   margin-bottom: var(--base-gap);
+}
+
+.scroll-top {
+  position: absolute;
+  right: $gap-sm;
+  bottom: $gap-lg;
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  background-color: #59bd5a;
+  border-radius: 2px;
+  transition: background-color 300ms;
+
+  &:hover {
+    background-color: darken(#59bd5a, 10);
+  }
 }

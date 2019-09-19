@@ -30,10 +30,11 @@ input {
 
 a {
   text-decoration: none;
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.page {
+  min-height: 100vh;
+  margin-bottom: $gap-lg;
 }
 
 .content {

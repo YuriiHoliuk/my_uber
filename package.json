@@ -19,7 +19,7 @@
     "reselect": "^4.0.0"
   },
   "devDependencies": {
-    "@mate-academy/eslint-config-react": "*",
+    "@mate-academy/eslint-config-react": "0.0.2",
     "@mate-academy/stylelint-config": "*",
     "eslint": "^5.16.0",
     "gh-pages": "^2.1.1",

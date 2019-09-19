@@ -28,7 +28,7 @@ export class RestaurantPage extends Component {
     } = restaurant;
 
     return (
-      <>
+      <div>
         <RestaurantWelcome
           title={title}
           categories={categories}
@@ -43,7 +43,7 @@ export class RestaurantPage extends Component {
           sections={sections}
           entitiesMap={entitiesMap}
         />
-      </>
+      </div>
     );
   }
 }

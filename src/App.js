@@ -12,8 +12,10 @@ export const App = () => (
   <Provider store={store}>
     <Router>
       <Header />
-      <Route exact path="/" component={RestaurantsListPage} />
-      <Route exact path="/:id" component={RestaurantPage} />
+      <div id="page" className="page">
+        <Route exact path="/" component={RestaurantsListPage} />
+        <Route exact path="/:id" component={RestaurantPage} />
+      </div>
       <Footer />
     </Router>
   </Provider>

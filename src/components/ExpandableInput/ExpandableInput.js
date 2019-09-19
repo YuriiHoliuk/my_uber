@@ -1,9 +1,9 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import './ExtendableInput.scss';
+import './ExpandableInput.scss';
 import { onEnter } from '../../utils/events';
 
-export class ExtendableInput extends Component {
+export class ExpandableInput extends Component {
   state = {
     extended: false,
   };
@@ -15,7 +15,10 @@ export class ExtendableInput extends Component {
   }
 
   closeOnClickOutside = ({ target }) => {
-    if (!target.closest('.extendable-input')) {
+    if (
+      !target.closest('.extendable-input')
+      && !target.closest('.extendable-input__clear-btn')
+    ) {
       this.close();
     }
   };
@@ -43,17 +46,20 @@ export class ExtendableInput extends Component {
     this.setState(
       { extended: true },
       () => {
-        this.inputRef.current.focus();
+        this.focus();
         setTimeout(this.listenClickOutside);
       },
     );
   };
 
+  focus = () => this.inputRef.current.focus();
+
   clear = () => {
     this.props.onChange('');
+    this.focus();
   };
 
-  onEnter = () => {
+  handleEnter = () => {
     this.props.onChange(this.inputRef.current.value);
     this.close();
   };
@@ -106,7 +112,7 @@ export class ExtendableInput extends Component {
               placeholder={placeholder}
               onChange={({ target }) => onChange(target.value)}
               value={value}
-              onKeyDown={onEnter(this.onEnter)}
+              onKeyDown={onEnter(this.handleEnter)}
             />
             {value && (
               <button
@@ -132,7 +138,7 @@ export class ExtendableInput extends Component {
   }
 }
 
-ExtendableInput.propTypes = {
+ExpandableInput.propTypes = {
   name: PropTypes.string.isRequired,
   iconUrl: PropTypes.string,
   onChange: PropTypes.func,
@@ -143,7 +149,7 @@ ExtendableInput.propTypes = {
   className: PropTypes.string,
 };
 
-ExtendableInput.defaultProps = {
+ExpandableInput.defaultProps = {
   iconUrl: null,
   onChange: () => {},
   buttonText: '',

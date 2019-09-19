@@ -1,14 +1,23 @@
 @import "../../styles/utils";
 
 .extendable-input {
+  --icon-size: 16px;
+
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
 
   position: relative;
   padding: 12px 16px;
 
   outline: none;
   cursor: pointer;
+
+  @media (max-width: $break-point-sm) {
+    --icon-size: 12px;
+
+    padding: 12px 8px;
+  }
 
   &--extended {
     background-color: #f6f6f6;
@@ -28,20 +37,20 @@
   }
 
   &__input {
-    vertical-align: middle;
     width: 100%;
-
-    background-color: transparent;
   }
 
   &__icon {
     margin-right: 18px;
+
+    @media (max-width: $break-point-sm) {
+      margin-right: 12px;
+    }
   }
 
   &__close-icon {
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
+    width: var(--icon-size);
+    height: var(--icon-size);
   }
 
   &__btn {
@@ -53,10 +62,14 @@
   }
 
   &__separator {
+    align-self: stretch;
     display: inline-block;
-    height: 24px;
     width: 1px;
     margin: 0 16px;
+
+    @media (max-width: $break-point-sm) {
+      margin: 0 8px;
+    }
 
     background-color: #e2e2e2;
   }

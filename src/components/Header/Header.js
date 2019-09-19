@@ -1,38 +1,40 @@
-import React, { Component, createRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
-import { ExtendableInput } from '../ExtendableInput';
+import { ExpandableInput } from '../ExpandableInput';
+import { Control } from '../Control';
 
 export class Header extends Component {
   state = {
     location: '',
     search: '',
     time: '',
-    isSticky: false,
-    height: 0,
+    shouldShowMobileControls: false,
   };
 
-  containerRef = createRef();
-
-  componentDidMount() {
-    // window.addEventListener('scroll', this.manageSticky);
-  }
-
   componentWillUnmount() {
-    // window.removeEventListener('scroll', this.manageSticky);
+    const { shouldShowMobileControls } = this.state;
+
+    if (shouldShowMobileControls) {
+      window.removeEventListener('scroll', this.hideControls);
+    }
   }
 
-  manageSticky = () => {
-    const y = window.scrollY;
-    const { isSticky } = this.state;
+  toggleControls = () => this.setState(({ shouldShowMobileControls }) => {
+    shouldShowMobileControls
+      ? window.removeEventListener('scroll', this.hideControls)
+      : window.addEventListener('scroll', this.hideControls);
 
-    if (y !== 0 && !isSticky) {
-      const { height } = this.containerRef.current.getBoundingClientRect();
+    return {
+      shouldShowMobileControls: !shouldShowMobileControls,
+    };
+  });
 
-      this.setState({ isSticky: true, height });
-    } else if (y === 0 && isSticky) {
-      this.setState({ isSticky: false, height: 0 });
+  hideControls = () => {
+    const { shouldShowMobileControls } = this.state;
+
+    if (shouldShowMobileControls) {
+      this.toggleControls();
     }
   };
 
@@ -41,14 +43,12 @@ export class Header extends Component {
       location,
       search,
       time,
-      isSticky,
-      height,
+      shouldShowMobileControls,
     } = this.state;
-    const containerClass = `header ${isSticky ? 'header--sticky' : ''}`;
 
     return (
       <>
-        <header className={containerClass} ref={this.containerRef}>
+        <header className="header">
           <div className="content">
             <div className="header__inner">
               <Link to="/">
@@ -59,8 +59,10 @@ export class Header extends Component {
                 />
               </Link>
 
-              <div className="header__delivery-info">
-                <ExtendableInput
+              <div
+                className="header__delivery-info header__delivery-info--desktop"
+              >
+                <ExpandableInput
                   name="location"
                   onChange={value => this.setState({ location: value })}
                   placeholder="Where we should deliver?"
@@ -69,7 +71,7 @@ export class Header extends Component {
                   value={location}
                 />
 
-                <ExtendableInput
+                <ExpandableInput
                   name="time"
                   onChange={value => this.setState({ time: value })}
                   iconUrl="./images/clock.svg"
@@ -79,52 +81,61 @@ export class Header extends Component {
                 />
               </div>
 
-              <div className="header__delivery-info--mobile">
-                <ExtendableInput
-                  name="location"
-                  onChange={value => this.setState({ location: value })}
-                  placeholder="Where we should deliver?"
-                  buttonText="Deliver address"
-                  iconUrl="./images/place.svg"
-                  value={location}
-                />
+              <div
+                className="header__delivery-info header__delivery-info--search"
+              >
+                <button
+                  type="button"
+                  className="header__btn header__btn--toggle"
+                  onClick={this.toggleControls}
+                >
+                  <img
+                    className="header__btn-image"
+                    src="./images/place.svg"
+                    alt="place point"
+                  />
+                </button>
 
-                <ExtendableInput
+                <ExpandableInput
                   name="search"
                   onChange={value => this.setState({ search: value })}
                   placeholder="What are you craving?"
                   buttonText="Search"
                   iconUrl="./images/search.svg"
                   value={search}
-                  className="header__search"
                 />
               </div>
-
-              <ExtendableInput
-                name="search"
-                onChange={value => this.setState({ search: value })}
-                placeholder="What are you craving?"
-                buttonText="Search"
-                iconUrl="./images/search.svg"
-                value={search}
-                className="header__search"
-              />
 
               <button type="button" className="header__btn">
                 Sign in
               </button>
             </div>
+            {shouldShowMobileControls && (
+              <div
+                className="header__delivery-info header__delivery-info--mobile"
+              >
+                <Control
+                  name="time"
+                  onChange={value => this.setState({ time: value })}
+                  iconUrl="./images/clock.svg"
+                  value={time}
+                  type="time"
+                  className="header__mobile-control"
+                />
+
+                <Control
+                  name="location"
+                  onChange={value => this.setState({ location: value })}
+                  placeholder="Choose address"
+                  iconUrl="./images/place.svg"
+                  value={location}
+                  className="header__mobile-control"
+                />
+              </div>
+            )}
           </div>
         </header>
-        <div
-          className="header__placeholder"
-          style={{ height }}
-        />
       </>
     );
   }
 }
-
-Header.propTypes = {
-
-};

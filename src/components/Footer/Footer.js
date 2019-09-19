@@ -105,5 +105,9 @@ export const Footer = () => (
         </div>
       </div>
     </div>
+
+    <a href="#page" className="scroll-top">
+      <img src="./images/arrow-top.svg" alt="scroll top arrow" />
+    </a>
   </footer>
 );

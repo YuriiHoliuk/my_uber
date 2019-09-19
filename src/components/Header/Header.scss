@@ -4,56 +4,89 @@
   @extend %sticky;
   overflow: hidden;
 
-  &--sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
-  }
-
   &__inner {
     width: 100%;
     display: flex;
     padding: 16px 0;
     align-items: center;
+
+    @media (max-width: $break-point-sm) {
+      padding: 8px 0;
+    }
   }
 
   &__logo {
     display: inline-block;
     height: 24px;
     width: auto;
-  }
 
-  &__search {
-    margin-left: auto;
-
-    @media (max-width: $break-point-md) {
-      display: none;
+    @media (max-width: $break-point-sm) {
+      height: 14px;
     }
   }
 
   &__btn {
-    margin-left: $gap-lg;
+    margin-left: $gap-sm;
     white-space: nowrap;
     padding: 12px 16px;
-  }
 
-  &__delivery-info {
     display: flex;
-    margin-left: 10vw;
+    align-items: center;
 
     @media (max-width: $break-point-md) {
-      display: none;
+      margin-left: 0;
+      padding: 12px 8px;
     }
 
-    &--mobile {
+    &--toggle {
       display: none;
 
       @media (max-width: $break-point-md) {
         display: flex;
       }
+    }
+  }
+
+  &__delivery-info {
+    display: flex;
+    margin-left: 5vw;
+
+    @media (max-width: $break-point-md) {
+      margin-left: 0;
+    }
+
+    &--search {
+      margin-left: auto;
+    }
+
+    &--desktop {
+      @media (max-width: $break-point-md) {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+      margin-left: 0;
+      padding-bottom: $gap-sm;
+
+      @media (max-width: $break-point-md) {
+        display: flex;
+      }
+
+      @media (max-width: $break-point-xs) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  &__mobile-control:not(:last-child) {
+    margin-right: $gap-sm;
+
+    @media (max-width: $break-point-xs) {
+      margin-right: 0;
+      margin-bottom: $gap-xs;
     }
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { restaurantType } from '../../constants/prop-types';
 import { RestaurantCard } from '../RestaurantCard';
-import './RestaurantsList.scss';
+import './RestaurantsListPage.scss';
 
 export class RestaurantsListPage extends Component {
   componentDidMount() {
@@ -13,8 +13,8 @@ export class RestaurantsListPage extends Component {
     const { restaurants } = this.props;
 
     return (
-      <div className="content">
-        <div className="cards-grid">
+      <div className="content page">
+        <div className="cards-grid restaurants">
           {restaurants.map(restaurant => (
             <RestaurantCard key={restaurant.id} {...restaurant} />
           ))}
