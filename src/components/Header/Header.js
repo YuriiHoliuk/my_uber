@@ -59,7 +59,7 @@ export class Header extends Component {
                 />
               </Link>
 
-              <div className="header__delivery-info delivery-info">
+              <div className="header__delivery-info">
                 <ExtendableInput
                   name="location"
                   onChange={value => this.setState({ location: value })}
@@ -76,6 +76,27 @@ export class Header extends Component {
                   buttonText="Deliver time"
                   value={time}
                   type="time"
+                />
+              </div>
+
+              <div className="header__delivery-info--mobile">
+                <ExtendableInput
+                  name="location"
+                  onChange={value => this.setState({ location: value })}
+                  placeholder="Where we should deliver?"
+                  buttonText="Deliver address"
+                  iconUrl="./images/place.svg"
+                  value={location}
+                />
+
+                <ExtendableInput
+                  name="search"
+                  onChange={value => this.setState({ search: value })}
+                  placeholder="What are you craving?"
+                  buttonText="Search"
+                  iconUrl="./images/search.svg"
+                  value={search}
+                  className="header__search"
                 />
               </div>
 

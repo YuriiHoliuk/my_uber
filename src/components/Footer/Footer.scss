@@ -1,0 +1,139 @@
+@import "../../styles/utils";
+
+.footer {
+  --column-width: 46vw;
+  --base-gap: #{$gap-lg};
+
+  padding: 70px 0;
+  color: #fff;
+  background-color: #262626;
+
+  @media (max-width: $break-point-md) {
+    --column-width: 36vw;
+    --base-gap: #{$gap-sm};
+
+    padding: $gap-md 0;
+  }
+
+  @media (max-width: $break-point-xs) {
+    padding: var(--base-gap) 0;
+  }
+
+  &__top {
+    display: flex;
+    padding-bottom: var(--base-gap);
+
+    border-bottom: 1px solid #c4c4c4;
+
+    @media (max-width: $break-point-xs) {
+      flex-direction: column;
+    }
+  }
+
+  &__top-links {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+
+    &:last-child {
+      margin-left: 10vw;
+
+      @media (max-width: $break-point-xs) {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__bottom-links {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: $break-point-xs) {
+      flex-direction: column;
+      margin: 0;
+    }
+  }
+
+  &__mobile-apps {
+    display: flex;
+
+    @media (max-width: $break-point-md) {
+      flex-direction: column;
+    }
+
+    @media (max-width: $break-point-xs) {
+      flex-direction: row;
+      margin-bottom: var(--base-gap);
+      padding: var(--base-gap) 0;
+
+      border-top: 1px solid #c4c4c4;
+      border-bottom: 1px solid #c4c4c4;
+    }
+  }
+
+  &__mobile-app {
+    line-height: 0;
+
+    display: inline-block;
+    width: 135px;
+    margin-right: $gap-xs;
+
+    @media (max-width: $break-point-xs) {
+      width: 120px;
+    }
+
+    &:first-child {
+      @media (max-width: $break-point-md) {
+        margin-bottom: var(--base-gap);
+      }
+
+      @media (max-width: $break-point-xs) {
+        margin-bottom: 0;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+
+    @media (max-width: $break-point-xs) {
+      flex-direction: column;
+    }
+  }
+
+  &__social-link:not(:last-child) {
+    margin-right: $gap-sm;
+  }
+
+  &__link {
+    color: #fff;
+    margin-bottom: 16px;
+    white-space: nowrap;
+
+    &--intended {
+      font-weight: 500;
+    }
+
+    &--inline:not(:last-child) {
+      margin-right: var(--base-gap);
+    }
+  }
+}
+
+.wide-column {
+  flex-basis: var(--column-width);
+  margin-right: var(--base-gap);
+
+  @media (max-width: $break-point-xs) {
+    flex-basis: initial;
+  }
+}
+
+.offset {
+  margin-bottom: var(--base-gap);
+}

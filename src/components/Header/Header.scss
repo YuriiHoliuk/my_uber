@@ -28,6 +28,10 @@
 
   &__search {
     margin-left: auto;
+
+    @media (max-width: $break-point-md) {
+      display: none;
+    }
   }
 
   &__btn {
@@ -35,9 +39,21 @@
     white-space: nowrap;
     padding: 12px 16px;
   }
-}
 
-.delivery-info {
-  display: flex;
-  margin-left: 10vw;
+  &__delivery-info {
+    display: flex;
+    margin-left: 10vw;
+
+    @media (max-width: $break-point-md) {
+      display: none;
+    }
+
+    &--mobile {
+      display: none;
+
+      @media (max-width: $break-point-md) {
+        display: flex;
+      }
+    }
+  }
 }
