@@ -6,7 +6,7 @@
   height: 380px;
   position: relative;
 
-  @media (max-width: $break-point-md) {
+  @include tablet {
     padding: 0 $gap-sm;
     align-items: flex-end;
     margin-bottom: 90px;
@@ -30,7 +30,7 @@
   padding: 24px $gap-lg 24px 98px;
   background: #fff;
 
-  @media (max-width: $break-point-md) {
+  @include tablet {
     position: relative;
     top: 50px;
 
@@ -38,7 +38,7 @@
     padding-left: 62px;
   }
 
-  @media (max-width: $break-point-sm) {
+  @include phone {
     top: 100px;
 
     padding-left: $gap-sm;
@@ -50,7 +50,7 @@
 
     margin-bottom: 16px;
 
-    @media (max-width: $break-point-md) {
+    @include tablet {
       font-size: $fz-xl-tablet;
     }
   }
@@ -60,13 +60,12 @@
 
     margin-top: 16px;
 
-    @media (max-width: $break-point-md) {
+    @include tablet {
       display: none;
     }
   }
 
   &__more {
-    text-decoration: none;
     color: #247a00;
 
     &:hover {

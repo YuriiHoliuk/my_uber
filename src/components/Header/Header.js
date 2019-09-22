@@ -12,31 +12,9 @@ export class Header extends Component {
     shouldShowMobileControls: false,
   };
 
-  componentWillUnmount() {
-    const { shouldShowMobileControls } = this.state;
-
-    if (shouldShowMobileControls) {
-      window.removeEventListener('scroll', this.hideControls);
-    }
-  }
-
-  toggleControls = () => this.setState(({ shouldShowMobileControls }) => {
-    shouldShowMobileControls
-      ? window.removeEventListener('scroll', this.hideControls)
-      : window.addEventListener('scroll', this.hideControls);
-
-    return {
-      shouldShowMobileControls: !shouldShowMobileControls,
-    };
-  });
-
-  hideControls = () => {
-    const { shouldShowMobileControls } = this.state;
-
-    if (shouldShowMobileControls) {
-      this.toggleControls();
-    }
-  };
+  toggleControls = () => this.setState(({ shouldShowMobileControls }) => ({
+    shouldShowMobileControls: !shouldShowMobileControls,
+  }));
 
   render() {
     const {

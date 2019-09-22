@@ -1,18 +1,12 @@
 @import "../../styles/utils";
 
 .menu-item-card {
-  --height: var(--menu-item-card-height);
-
-  @media (max-width: $break-point-sm) {
-    --height: calc(var(--menu-item-card-height) * 0.75);
-  }
-
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
   justify-content: space-between;
 
-  height: var(--height);
+  height: var(--menu-item-card-height);
   width: 100%;
 
   border: 1px solid #e0e0e0;
@@ -22,7 +16,7 @@
     flex-flow: column nowrap;
     justify-content: space-between;
 
-    max-width: calc(100% - var(--height));
+    max-width: calc(100% - var(--menu-item-card-height));
     height: 100%;
     padding: 16px;
 
@@ -47,7 +41,7 @@
 
     margin-bottom: 10px;
 
-    @media (max-width: $break-point-sm) {
+    @include phone {
       display: block;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -57,7 +51,7 @@
   &__img {
     display: block;
     height: auto;
-    width: var(--height);
+    width: var(--menu-item-card-height);
     max-width: 45%;
     align-self: center;
   }

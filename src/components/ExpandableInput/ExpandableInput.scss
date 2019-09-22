@@ -13,7 +13,7 @@
   outline: none;
   cursor: pointer;
 
-  @media (max-width: $break-point-sm) {
+  @include phone {
     --icon-size: 12px;
 
     padding: 12px 8px;
@@ -43,7 +43,7 @@
   &__icon {
     margin-right: 18px;
 
-    @media (max-width: $break-point-sm) {
+    @include phone {
       margin-right: 12px;
     }
   }
@@ -56,7 +56,7 @@
   &__btn {
     white-space: nowrap;
 
-    @media (max-width: $break-point-md) {
+    @include tablet {
       display: none;
     }
   }
@@ -67,7 +67,7 @@
     width: 1px;
     margin: 0 16px;
 
-    @media (max-width: $break-point-sm) {
+    @include phone {
       margin: 0 8px;
     }
 

@@ -8,10 +8,10 @@
     white-space: nowrap;
 
     display: flex;
-    list-style: none;
     align-items: center;
-    overflow: auto;
 
+    list-style: none;
+    overflow: auto;
     margin-bottom: $gap-lg;
   }
 
@@ -48,7 +48,7 @@
     color: #000;
     text-decoration: none;
 
-    @media (max-width: $break-point-sm) {
+    @include phone {
       padding: $gap-xs 0;
     }
   }

@@ -10,7 +10,7 @@
     padding: 16px 0;
     align-items: center;
 
-    @media (max-width: $break-point-sm) {
+    @include phone {
       padding: 8px 0;
     }
   }
@@ -20,7 +20,7 @@
     height: 24px;
     width: auto;
 
-    @media (max-width: $break-point-sm) {
+    @include phone {
       height: 14px;
     }
   }
@@ -33,7 +33,7 @@
     display: flex;
     align-items: center;
 
-    @media (max-width: $break-point-md) {
+    @include tablet {
       margin-left: 0;
       padding: 12px 8px;
     }
@@ -41,7 +41,7 @@
     &--toggle {
       display: none;
 
-      @media (max-width: $break-point-md) {
+      @include tablet {
         display: flex;
       }
     }
@@ -51,7 +51,7 @@
     display: flex;
     margin-left: 5vw;
 
-    @media (max-width: $break-point-md) {
+    @include tablet {
       margin-left: 0;
     }
 
@@ -60,7 +60,7 @@
     }
 
     &--desktop {
-      @media (max-width: $break-point-md) {
+      @include tablet {
         display: none;
       }
     }
@@ -70,11 +70,11 @@
       margin-left: 0;
       padding-bottom: $gap-sm;
 
-      @media (max-width: $break-point-md) {
+      @include tablet {
         display: flex;
       }
 
-      @media (max-width: $break-point-xs) {
+      @include phone-s {
         flex-direction: column;
         align-items: flex-start;
       }
@@ -84,7 +84,7 @@
   &__mobile-control:not(:last-child) {
     margin-right: $gap-sm;
 
-    @media (max-width: $break-point-xs) {
+    @include phone-s {
       margin-right: 0;
       margin-bottom: $gap-xs;
     }
