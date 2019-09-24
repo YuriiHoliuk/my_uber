@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.scss';
 import { urls } from './urls';
+import { Select } from '../Select';
 
 export const Footer = () => (
   <footer className="footer">
@@ -14,10 +15,14 @@ export const Footer = () => (
               className="offset"
             />
             <div className="offset">
-              <select name="language" id="lg">
-                <option value="ua">Ukrainian</option>
-                <option value="en">English</option>
-              </select>
+              <Select
+                name="language"
+                options={[
+                  { value: 'ua', label: 'Ukrainian' },
+                  { value: 'en', label: 'English' },
+                ]}
+                value="ua"
+              />
             </div>
             <div className="footer__mobile-apps">
               <a className="footer__mobile-app" href={urls.appStore}>

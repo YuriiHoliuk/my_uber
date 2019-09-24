@@ -27,8 +27,28 @@ app.get('/restaurants/:id', async(req, res) => {
   const { id } = req.params;
   const dataPath = path.join(__dirname, 'data', 'restaurants', `${id}.json`);
   const file = await readFile(dataPath);
+  const restaurantData = JSON.parse(file.toString());
+  const {
+    data: {
+      sections: { 0: { subsectionUuids: sections, uuid: firstSectionUuid } },
+      subsectionsMap: sectionsMap,
+      sectionEntitiesMap,
+      ...restData
+    },
+    ...rest
+  } = restaurantData;
+  const entitiesMap = sectionEntitiesMap[firstSectionUuid];
+  const responseData = {
+    data: {
+      ...restData,
+      sections,
+      sectionsMap,
+      entitiesMap,
+    },
+    ...rest,
+  };
 
-  res.json(JSON.parse(file.toString()));
+  res.json(responseData);
 });
 
 app.listen(PORT, () => console.log(`Server listen on port ${PORT}`));

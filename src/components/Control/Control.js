@@ -78,7 +78,7 @@ Control.propTypes = {
 };
 
 Control.defaultProps = {
-  type: 'text',
+  type: 'errorMessage',
   label: '',
   iconUrl: '',
   placeholder: '',

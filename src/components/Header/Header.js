@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
-import { ExpandableInput } from '../ExpandableInput';
 import { Control } from '../Control';
 
 export class Header extends Component {
@@ -40,22 +39,20 @@ export class Header extends Component {
               <div
                 className="header__delivery-info header__delivery-info--desktop"
               >
-                <ExpandableInput
-                  name="location"
-                  onChange={value => this.setState({ location: value })}
-                  placeholder="Where we should deliver?"
-                  buttonText="Deliver address"
-                  iconUrl="./images/place.svg"
-                  value={location}
-                />
-
-                <ExpandableInput
+                <Control
                   name="time"
                   onChange={value => this.setState({ time: value })}
                   iconUrl="./images/clock.svg"
-                  buttonText="Deliver time"
                   value={time}
                   type="time"
+                />
+
+                <Control
+                  name="location"
+                  onChange={value => this.setState({ location: value })}
+                  placeholder="Choose address"
+                  iconUrl="./images/place.svg"
+                  value={location}
                 />
               </div>
 
@@ -74,11 +71,10 @@ export class Header extends Component {
                   />
                 </button>
 
-                <ExpandableInput
+                <Control
                   name="search"
                   onChange={value => this.setState({ search: value })}
                   placeholder="What are you craving?"
-                  buttonText="Search"
                   iconUrl="./images/search.svg"
                   value={search}
                 />

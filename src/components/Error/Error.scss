@@ -1,0 +1,29 @@
+@import "../../styles/utils";
+
+.error {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  &__text {
+    font-size: $fz-xl;
+    font-weight: 500;
+  }
+
+  &__link {
+    font-size: $fz-lg;
+    color: #247a00;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

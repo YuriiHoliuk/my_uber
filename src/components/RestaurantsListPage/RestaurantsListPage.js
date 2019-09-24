@@ -3,14 +3,31 @@ import PropTypes from 'prop-types';
 import { restaurantType } from '../../constants/prop-types';
 import { RestaurantCard } from '../RestaurantCard';
 import './RestaurantsListPage.scss';
+import { Loader } from '../Loader';
+import { Error } from '../Error';
 
 export class RestaurantsListPage extends Component {
   componentDidMount() {
-    this.props.loadRestaurants();
+    const {
+      isLoaded,
+      loadRestaurants,
+    } = this.props;
+
+    if (!isLoaded) {
+      loadRestaurants();
+    }
   }
 
   render() {
-    const { restaurants } = this.props;
+    const { restaurants, isLoading, error } = this.props;
+
+    if (error && !isLoading) {
+      return <Error errorMessage={error} />;
+    }
+
+    if (isLoading) {
+      return <Loader />;
+    }
 
     return (
       <div className="content page">
@@ -27,4 +44,13 @@ export class RestaurantsListPage extends Component {
 RestaurantsListPage.propTypes = {
   restaurants: PropTypes.arrayOf(PropTypes.shape(restaurantType)).isRequired,
   loadRestaurants: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  isLoaded: PropTypes.bool,
+  error: PropTypes.string,
+};
+
+RestaurantsListPage.defaultProps = {
+  isLoading: false,
+  isLoaded: false,
+  error: null,
 };

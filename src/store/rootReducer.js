@@ -1,23 +1,10 @@
-import { createReducer } from '../utils/redux';
-import { SET_RESTAURANT_DETAILS, SET_RESTAURANTS } from './types';
+import { combineReducers } from 'redux';
+import { loader } from './reducers/loader';
+import { restaurantsList } from './reducers/restaurantsList';
+import { restaurantsDetails } from './reducers/restaurantsDetails';
 
-const initialState = {
-  listData: null,
-  details: {},
-};
-
-const actionHandlers = {
-  [SET_RESTAURANTS]: (state, { payload }) => ({
-    ...state,
-    listData: payload,
-  }),
-  [SET_RESTAURANT_DETAILS]: (state, { payload }) => ({
-    ...state,
-    details: {
-      ...state.details,
-      [payload.uuid]: payload,
-    },
-  }),
-};
-
-export const rootReducer = createReducer(actionHandlers, initialState);
+export const rootReducer = combineReducers({
+  loader,
+  restaurantsList,
+  restaurantsDetails,
+});

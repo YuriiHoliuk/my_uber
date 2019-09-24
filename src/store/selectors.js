@@ -1,12 +1,36 @@
 import { createSelector } from 'reselect';
 import { DEFAULT_ETA_RANGE } from '../constants/defaults';
+import { REDUCER_NAME as LOADER } from './reducers/loader';
+import { REDUCER_NAME as LIST } from './reducers/restaurantsList';
+import { REDUCER_NAME as DETAILS } from './reducers/restaurantsDetails';
 
-const selectRestaurantsList = ({ listData }) => listData;
-const detailsSelector = ({ details }) => details;
+const loaderRoot = state => state[LOADER];
+const listRoot = state => state[LIST];
+const detailsRoot = state => state[DETAILS];
+
+export const selectIsLoading = createSelector(
+  loaderRoot,
+  ({ isLoading }) => isLoading,
+);
+
+export const selectRestaurantsError = createSelector(
+  listRoot,
+  ({ error }) => error,
+);
+
+export const selectRestaurantsLoaded = createSelector(
+  listRoot,
+  ({ isLoaded }) => isLoaded,
+);
+
+export const selectRestaurantDetailsError = createSelector(
+  detailsRoot,
+  ({ error }) => error,
+);
 
 export const selectRestaurants = createSelector(
-  selectRestaurantsList,
-  (data) => {
+  listRoot,
+  ({ listData: data }) => {
     if (!data) {
       return [];
     }
@@ -25,7 +49,7 @@ export const selectRestaurants = createSelector(
         id: uuid,
         title,
         categories,
-        etaRange: etaRange ? etaRange.text : DEFAULT_ETA_RANGE,
+        etaRange: etaRange ? etaRange.errorMessage : DEFAULT_ETA_RANGE,
         imageUrl: heroImageUrl,
       };
     });
@@ -33,10 +57,10 @@ export const selectRestaurants = createSelector(
 );
 
 export const selectRestaurantDetails = createSelector(
-  detailsSelector,
+  detailsRoot,
   (_, id) => id,
-  (details, id) => {
-    const restaurant = details[id];
+  ({ byId }, id) => {
+    const restaurant = byId[id];
 
     if (!restaurant) {
       return null;
@@ -48,11 +72,10 @@ export const selectRestaurantDetails = createSelector(
       categories,
       heroImageUrls,
       location: { address },
-      sections: { 0: { subsectionUuids: sectionIds, uuid: firstSectionUuid } },
-      subsectionsMap: sectionsMap,
-      sectionEntitiesMap,
+      sections: sectionIds,
+      sectionsMap,
+      entitiesMap,
     } = restaurant;
-    const entitiesMap = sectionEntitiesMap[firstSectionUuid];
     const sections = sectionIds.map(sectionId => sectionsMap[sectionId]);
 
     return {
@@ -62,7 +85,7 @@ export const selectRestaurantDetails = createSelector(
       sections,
       entitiesMap,
       imageUrls: heroImageUrls,
-      etaRange: etaRange ? etaRange.text : DEFAULT_ETA_RANGE,
+      etaRange: etaRange ? etaRange.errorMessage : DEFAULT_ETA_RANGE,
     };
   },
 );

@@ -418,7 +418,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "Супер соковиті бургери"
+          "errorMessage": "Супер соковиті бургери"
         },
         "promoTrackings": []
       },
@@ -497,7 +497,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_healthy@3x.png",
-          "text": "Здорові обіди та десерти без цукру"
+          "errorMessage": "Здорові обіди та десерти без цукру"
         },
         "promoTrackings": []
       },
@@ -551,7 +551,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "Справжні японські суші"
+          "errorMessage": "Справжні японські суші"
         },
         "promoTrackings": []
       },
@@ -579,7 +579,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "Усе по 29 грн"
+          "errorMessage": "Усе по 29 грн"
         },
         "promoTrackings": []
       },
@@ -1108,7 +1108,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "Вишукані десерти"
+          "errorMessage": "Вишукані десерти"
         },
         "promoTrackings": []
       },
@@ -1206,7 +1206,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "Улюблені авторські десерти"
+          "errorMessage": "Улюблені авторські десерти"
         },
         "promoTrackings": []
       },
@@ -1459,7 +1459,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "При замовленні від 200 грн отримуй Хачапурі по-мегрельскі у подарунок"
+          "errorMessage": "При замовленні від 200 грн отримуй Хачапурі по-мегрельскі у подарунок"
         },
         "promoTrackings": []
       },
@@ -1487,7 +1487,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": " Збалансовані страви з натуральних продуктів   "
+          "errorMessage": " Збалансовані страви з натуральних продуктів   "
         },
         "promoTrackings": []
       },
@@ -1590,7 +1590,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "Замовляй нові комбо-меню за 170 грн! "
+          "errorMessage": "Замовляй нові комбо-меню за 170 грн! "
         },
         "promoTrackings": []
       },
@@ -2043,7 +2043,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "Усе по 29 грн"
+          "errorMessage": "Усе по 29 грн"
         },
         "promoTrackings": []
       },
@@ -2121,7 +2121,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "Легендарні сендвічі з різними начинками"
+          "errorMessage": "Легендарні сендвічі з різними начинками"
         },
         "promoTrackings": []
       },
@@ -2267,7 +2267,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "Одеські делікатеси"
+          "errorMessage": "Одеські делікатеси"
         },
         "promoTrackings": []
       },

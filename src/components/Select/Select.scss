@@ -1,0 +1,20 @@
+.select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  padding: 10px 35px 10px 40px;
+
+  background-color: transparent;
+  background-image: url("../../images/world.svg"), url("../../images/arrow.svg");
+  background-position: 10px center, calc(100% - 10px) center;
+  background-repeat: no-repeat, no-repeat;
+
+  color: #fff;
+  border: 1px solid #979797;
+  cursor: pointer;
+  transition: background-color 300ms;
+
+  &:hover {
+    background-color: rgba(105, 105, 105, 0.3);
+  }
+}

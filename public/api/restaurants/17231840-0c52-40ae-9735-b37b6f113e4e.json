@@ -1378,7 +1378,7 @@
     "metaJson": "{\"@context\":\"http:\\u002F\\u002Fschema.org\",\"@type\":\"Restaurant\",\"@id\":\"https:\\u002F\\u002Fwww.ubereats.com\\u002Fen-US\\u002Flondon\\u002Ffood-delivery\\u002Ftop-dogs-bloomsbury\\u002FFyMYQAxSQK6XNbN7bxE-Tg\\u002F\",\"name\":\"Top Dogs (Bloomsbury)\",\"priceRange\":\"£\",\"potentialAction\":{\"@type\":\"OrderAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https:\\u002F\\u002Fwww.ubereats.com\\u002Fen-US\\u002Flondon\\u002Ffood-delivery\\u002Ftop-dogs-bloomsbury\\u002FFyMYQAxSQK6XNbN7bxE-Tg\\u002F?utm_campaign=order-action&utm_medium=organic\",\"inLanguage\":\"English\",\"actionPlatform\":[\"http:\\u002F\\u002Fschema.org\\u002FDesktopWebPlatform\",\"http:\\u002F\\u002Fschema.org\\u002FMobileWebPlatform\"]},\"deliveryMethod\":[\"http:\\u002F\\u002Fpurl.org\\u002Fgoodrelations\\u002Fv1#DeliveryModeOwnFleet\"]},\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"London\",\"addressRegion\":\"London\",\"postalCode\":\"WC1B 3NQ\",\"addressCountry\":\"GB\",\"streetAddress\":\"111A Great Russell St, Fitzrovia\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":51.5173601,\"longitude\":-0.1299949}}",
     "promoTrackings": [],
     "suggestedPromotion": {
-      "text": "",
+      "errorMessage": "",
       "promotionUuid": ""
     }
   }

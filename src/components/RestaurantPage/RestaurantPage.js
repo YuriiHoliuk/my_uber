@@ -4,17 +4,27 @@ import './RestaurantPage.scss';
 import { CategoriesMenu } from '../CategoriesMenu';
 import { MenuSections } from '../MenuSections';
 import { RestaurantWelcome } from '../RestaurantWelcome';
+import { Loader } from '../Loader';
+import { Error } from '../Error';
 
 export class RestaurantPage extends Component {
   componentDidMount() {
-    this.props.loadRestaurantDetails(this.props.match.params.id);
+    const { restaurant, loadRestaurantDetails, match } = this.props;
+
+    if (!restaurant) {
+      loadRestaurantDetails(match.params.id);
+    }
   }
 
   render() {
-    const { restaurant } = this.props;
+    const { restaurant, isLoading, error } = this.props;
 
-    if (!restaurant) {
-      return null;
+    if (error && !isLoading) {
+      return <Error errorMessage={error} />;
+    }
+
+    if (isLoading || !restaurant) {
+      return <Loader />;
     }
 
     const {
@@ -71,8 +81,12 @@ RestaurantPage.propTypes = {
     })),
     etaRange: PropTypes.string,
   }),
+  isLoading: PropTypes.bool,
+  error: PropTypes.string,
 };
 
 RestaurantPage.defaultProps = {
   restaurant: null,
+  isLoading: false,
+  error: null,
 };

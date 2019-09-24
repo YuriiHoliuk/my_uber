@@ -3919,14 +3919,14 @@
     ],
     "priceBucket": "£",
     "etaRange": {
-      "text": "15–25 min",
+      "errorMessage": "15–25 min",
       "iconUrl": ""
     },
     "ratingBadge": {
-      "text": "<span><span style=\"font-family: inherit; color: #3a3a48;\">4.0 <img src=\"https://d1a3f4spazzrp4.cloudfront.net/static/images/Star_Black_Eats_3.png\" width=\"14\" height=\"14\" vertical-align=\"middle\"> </span><span style=\"font-family: inherit; color: #757575;\">(200+)</span></span>"
+      "errorMessage": "<span><span style=\"font-family: inherit; color: #3a3a48;\">4.0 <img src=\"https://d1a3f4spazzrp4.cloudfront.net/static/images/Star_Black_Eats_3.png\" width=\"14\" height=\"14\" vertical-align=\"middle\"> </span><span style=\"font-family: inherit; color: #757575;\">(200+)</span></span>"
     },
     "disclaimerBadge": {
-      "text": "<span style=\"font-family: inherit;\">We cannot guarantee your food is allergen free. Your food and its packaging may come into contact with allergens during preparation, cooking or delivery. The food is produced in kitchens where allergens are handled and where equipment and utensils are used for multiple menu items, including those containing allergens. For nutritional and allergen information visit www.mcdonalds.co.uk. To find the latest Food Hygiene Rating for your chose restaurant, visit the <a href=\"http://ratings.food.gov.uk/\" style=\"color:#61ad5f;\">Food Standard Agency</a>.</span>"
+      "errorMessage": "<span style=\"font-family: inherit;\">We cannot guarantee your food is allergen free. Your food and its packaging may come into contact with allergens during preparation, cooking or delivery. The food is produced in kitchens where allergens are handled and where equipment and utensils are used for multiple menu items, including those containing allergens. For nutritional and allergen information visit www.mcdonalds.co.uk. To find the latest Food Hygiene Rating for your chose restaurant, visit the <a href=\"http://ratings.food.gov.uk/\" style=\"color:#61ad5f;\">Food Standard Agency</a>.</span>"
     },
     "fareBadge": null,
     "fareInfo": {
@@ -4032,7 +4032,7 @@
     "metaJson": "{\"@context\":\"http:\\u002F\\u002Fschema.org\",\"@type\":\"Restaurant\",\"@id\":\"https:\\u002F\\u002Fwww.ubereats.com\\u002Fen-US\\u002Flondon\\u002Ffood-delivery\\u002Fmcdonalds-victoria\\u002F18lC6NKzQAS5ZNjgCNp1sA\\u002F\",\"name\":\"McDonald's® (Victoria)\",\"priceRange\":\"£\",\"potentialAction\":{\"@type\":\"OrderAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https:\\u002F\\u002Fwww.ubereats.com\\u002Fen-US\\u002Flondon\\u002Ffood-delivery\\u002Fmcdonalds-victoria\\u002F18lC6NKzQAS5ZNjgCNp1sA\\u002F?utm_campaign=order-action&utm_medium=organic\",\"inLanguage\":\"English\",\"actionPlatform\":[\"http:\\u002F\\u002Fschema.org\\u002FDesktopWebPlatform\",\"http:\\u002F\\u002Fschema.org\\u002FMobileWebPlatform\"]},\"deliveryMethod\":[\"http:\\u002F\\u002Fpurl.org\\u002Fgoodrelations\\u002Fv1#DeliveryModeOwnFleet\"]},\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Westminster, London\",\"addressRegion\":\"UK\",\"postalCode\":\"SW1E 5NA\",\"addressCountry\":\"UK\",\"streetAddress\":\"155 Victoria Street\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":51.496652,\"longitude\":-0.141349}}",
     "promoTrackings": [],
     "suggestedPromotion": {
-      "text": "",
+      "errorMessage": "",
       "promotionUuid": ""
     }
   }

@@ -447,7 +447,7 @@
           "ratingCount": "39"
         },
         "etaRange": {
-          "text": "10–20 min",
+          "errorMessage": "10–20 min",
           "iconUrl": ""
         },
         "fareBadge": null,
@@ -590,7 +590,7 @@
         ],
         "feedback": null,
         "etaRange": {
-          "text": "25–35 min",
+          "errorMessage": "25–35 min",
           "iconUrl": ""
         },
         "fareBadge": null,
@@ -794,7 +794,7 @@
           "ratingCount": "200+"
         },
         "etaRange": {
-          "text": "15–25 min",
+          "errorMessage": "15–25 min",
           "iconUrl": ""
         },
         "fareBadge": null,
@@ -900,7 +900,7 @@
         "isDeliveryThirdParty": false,
         "endorsement": {
           "iconUrl": "https://uber-test.s3.amazonaws.com/badge_check@3x.png",
-          "text": "Ranked #82 of Quick Bites in London (TripAdvisor, May 2019)"
+          "errorMessage": "Ranked #82 of Quick Bites in London (TripAdvisor, May 2019)"
         },
         "promoTrackings": []
       },
@@ -969,7 +969,7 @@
         ],
         "feedback": null,
         "etaRange": {
-          "text": "25–35 min",
+          "errorMessage": "25–35 min",
           "iconUrl": ""
         },
         "fareBadge": null,
@@ -1069,7 +1069,7 @@
           "ratingCount": "30"
         },
         "etaRange": {
-          "text": "35–45 min",
+          "errorMessage": "35–45 min",
           "iconUrl": ""
         },
         "fareBadge": null,
@@ -1222,7 +1222,7 @@
           "ratingCount": "200+"
         },
         "etaRange": {
-          "text": "15–25 min",
+          "errorMessage": "15–25 min",
           "iconUrl": ""
         },
         "fareBadge": null,
@@ -1296,7 +1296,7 @@
         ],
         "feedback": null,
         "etaRange": {
-          "text": "15–25 min",
+          "errorMessage": "15–25 min",
           "iconUrl": ""
         },
         "fareBadge": null,
@@ -1720,7 +1720,7 @@
           "ratingCount": "189"
         },
         "etaRange": {
-          "text": "10–20 min",
+          "errorMessage": "10–20 min",
           "iconUrl": ""
         },
         "fareBadge": null,
@@ -1747,7 +1747,7 @@
           "ratingCount": "63"
         },
         "etaRange": {
-          "text": "15–25 min",
+          "errorMessage": "15–25 min",
           "iconUrl": ""
         },
         "fareBadge": null,
@@ -1971,7 +1971,7 @@
         ],
         "feedback": null,
         "etaRange": {
-          "text": "25–35 min",
+          "errorMessage": "25–35 min",
           "iconUrl": ""
         },
         "fareBadge": null,
